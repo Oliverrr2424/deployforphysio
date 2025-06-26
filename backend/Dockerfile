@@ -9,10 +9,10 @@ WORKDIR /app
 RUN apk add --no-cache curl
 
 # Copy Maven wrapper and pom.xml first for better caching
-COPY backend/.mvn/ .mvn/
-COPY backend/mvnw .
-COPY backend/mvnw.cmd .
-COPY backend/pom.xml .
+COPY .mvn/ .mvn/
+COPY mvnw .
+COPY mvnw.cmd .
+COPY pom.xml .
 
 # Make mvnw executable
 RUN chmod +x mvnw
