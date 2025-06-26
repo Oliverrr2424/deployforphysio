@@ -12,7 +12,7 @@ RUN apk add --no-cache curl
 COPY mvnw .
 COPY mvnw.cmd .
 COPY pom.xml .
-COPY .mvn .mvn
+COPY .mvn/ .mvn/
 
 # Make mvnw executable
 RUN chmod +x mvnw
