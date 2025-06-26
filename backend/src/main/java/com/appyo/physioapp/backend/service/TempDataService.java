@@ -17,7 +17,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-@Transactional
 public class TempDataService {
     
     private static final Logger logger = LoggerFactory.getLogger(TempDataService.class);
@@ -86,30 +85,36 @@ public class TempDataService {
     
     // Cleanup Methods
     @Scheduled(fixedRate = 3600000) // Run every hour
+    @Transactional
     public void cleanupExpiredData() {
-        logger.info("Starting cleanup of expired temporary data...");
-        LocalDateTime now = LocalDateTime.now();
-        
-        // Cleanup expired preferences
-        List<UserPreferences> expiredPreferences = userPreferencesRepository.findExpiredPreferences(now);
-        if (!expiredPreferences.isEmpty()) {
-            userPreferencesRepository.deactivateExpiredPreferences(now);
-            logger.info("Deactivated {} expired user preferences", expiredPreferences.size());
+        try {
+            logger.info("Starting cleanup of expired temporary data...");
+            LocalDateTime now = LocalDateTime.now();
+            
+            // Cleanup expired preferences
+            List<UserPreferences> expiredPreferences = userPreferencesRepository.findExpiredPreferences(now);
+            if (!expiredPreferences.isEmpty()) {
+                userPreferencesRepository.deactivateExpiredPreferences(now);
+                logger.info("Deactivated {} expired user preferences", expiredPreferences.size());
+            }
+            
+            // Cleanup expired plans
+            List<GeneratedPlan> expiredPlans = generatedPlanRepository.findExpiredPlans(now);
+            if (!expiredPlans.isEmpty()) {
+                generatedPlanRepository.deactivateExpiredPlans(now);
+                logger.info("Deactivated {} expired generated plans", expiredPlans.size());
+            }
+            
+            // Delete very old data (older than 30 days)
+            LocalDateTime cutoffDate = now.minusDays(30);
+            userPreferencesRepository.deleteExpiredPreferences(cutoffDate);
+            generatedPlanRepository.deleteExpiredPlans(cutoffDate);
+            
+            logger.info("Cleanup completed");
+        } catch (Exception e) {
+            logger.error("Error during cleanup process: {}", e.getMessage(), e);
+            // Don't rethrow - let the scheduler continue running
         }
-        
-        // Cleanup expired plans
-        List<GeneratedPlan> expiredPlans = generatedPlanRepository.findExpiredPlans(now);
-        if (!expiredPlans.isEmpty()) {
-            generatedPlanRepository.deactivateExpiredPlans(now);
-            logger.info("Deactivated {} expired generated plans", expiredPlans.size());
-        }
-        
-        // Delete very old data (older than 30 days)
-        LocalDateTime cutoffDate = now.minusDays(30);
-        userPreferencesRepository.deleteExpiredPreferences(cutoffDate);
-        generatedPlanRepository.deleteExpiredPlans(cutoffDate);
-        
-        logger.info("Cleanup completed");
     }
     
     // Manual cleanup for testing
