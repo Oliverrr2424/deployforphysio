@@ -5,26 +5,20 @@ FROM eclipse-temurin:21-jdk-alpine AS build
 # Set working directory
 WORKDIR /app
 
-# Install necessary packages
-RUN apk add --no-cache curl
+# Install necessary packages and Maven
+RUN apk add --no-cache curl maven
 
-# Copy Maven wrapper and pom.xml first for better caching
-COPY .mvn/ .mvn/
-COPY mvnw .
-COPY mvnw.cmd .
+# Copy pom.xml first for better caching
 COPY pom.xml .
 
-# Make mvnw executable
-RUN chmod +x mvnw
-
 # Download dependencies (cached layer)
-RUN ./mvnw dependency:go-offline -B
+RUN mvn dependency:go-offline -B
 
 # Copy source code
 COPY src ./src
 
 # Build the application
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Production Stage
 FROM eclipse-temurin:21-jre-alpine
