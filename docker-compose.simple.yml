@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # Backend Service - connects to existing Supabase local instance
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: physioapp-backend
+    environment:
+      # Use host.docker.internal to connect to Supabase running on host
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:54322/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      
+      # JPA Configuration
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+      SPRING_JPA_SHOW_SQL: false
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      
+      # Server Configuration
+      SERVER_PORT: 8080
+      
+      # JWT Configuration
+      JWT_SECRET: super-secret-jwt-token-with-at-least-32-characters-long-for-physioapp-backend-auth
+      
+      # AI API Configuration
+      DEEPSEEK_API_KEY: sk-7acc90f0cfa84564a6da1f4a651f1b54
+      DEEPSEEK_API_URL: https://api.deepseek.com
+      
+      # CORS Configuration
+      SPRING_WEB_CORS_ALLOWED_ORIGINS: http://localhost:3000,http://localhost:3001
+      
+      # Logging
+      LOGGING_LEVEL_COM_APPYO_PHYSIOAPP: INFO
+    ports:
+      - "8080:8080"
+    networks:
+      - physioapp-network
+    restart: unless-stopped
+
+  # Frontend Service
+  frontend:
+    build:
+      context: ./physioapp-frontend
+      dockerfile: Dockerfile
+    container_name: physioapp-frontend
+    environment:
+      # React environment variables
+      REACT_APP_API_URL: http://localhost:8080
+      NODE_ENV: production
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - physioapp-network
+    restart: unless-stopped
+
+networks:
+  physioapp-network:
+    driver: bridge 

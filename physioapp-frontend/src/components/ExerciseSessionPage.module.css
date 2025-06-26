@@ -1,0 +1,411 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Header Section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.sessionInfo h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1rem 0;
+}
+
+.timers {
+  display: flex;
+  gap: 2rem;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timerLabel {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.timerValue {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #667eea;
+  font-family: 'Courier New', monospace;
+}
+
+.sessionControls {
+  display: flex;
+  gap: 1rem;
+}
+
+.pauseButton, .saveAndQuitButton, .completeSessionButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.pauseButton {
+  background: linear-gradient(135deg, #ffd93d 0%, #ff6b6b 100%);
+  color: white;
+}
+
+.pauseButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 217, 61, 0.4);
+}
+
+.saveAndQuitButton {
+  background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+  color: #2d3436;
+  box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
+}
+
+.saveAndQuitButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(253, 203, 110, 0.4);
+}
+
+.completeSessionButton {
+  background: linear-gradient(135deg, #00b894, #00a085);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 184, 148, 0.3);
+}
+
+.completeSessionButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.4);
+}
+
+/* Progress Section */
+.progressSection {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.progressBar {
+  width: 100%;
+  height: 12px;
+  background: rgba(102, 126, 234, 0.2);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Exercise Card */
+.exerciseCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.exerciseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.exerciseHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.difficultyBadge {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.exerciseDescription {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.exerciseStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 0.75rem;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.statValue {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.instructions {
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  border-left: 4px solid #667eea;
+}
+
+.instructions h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.75rem 0;
+}
+
+.instructions p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Sets Tracker */
+.setsTracker {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.setsTracker h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 1.5rem 0;
+}
+
+.setsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.setButton {
+  position: relative;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  border-radius: 0.75rem;
+  font-weight: 600;
+  color: #667eea;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.setButton:hover:not(:disabled) {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+.setButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.setButton.completed {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  border-color: #22c55e;
+  color: white;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.setsInfo {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.skipExerciseButton, .nextExerciseButton {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 180px;
+}
+
+.skipExerciseButton {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.skipExerciseButton:hover {
+  background: rgba(255, 107, 107, 0.3);
+  transform: translateY(-1px);
+}
+
+.nextExerciseButton {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+}
+
+.nextExerciseButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .timers {
+    gap: 1rem;
+  }
+
+  .sessionControls {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .exerciseStats {
+    grid-template-columns: 1fr;
+  }
+
+  .setsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .skipExerciseButton, .nextExerciseButton {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Exercise Image Section */
+.exerciseImageSection {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.exerciseImage {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+}
+
+.exerciseImagePlaceholder {
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+.placeholderIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.exerciseImagePlaceholder p {
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+.exerciseImagePlaceholder small {
+  font-size: 0.8rem;
+  opacity: 0.7;
+} 

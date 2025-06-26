@@ -1,0 +1,849 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Header Navigation */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.navButton.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+  font-weight: 600;
+}
+
+.logoutButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* Main Content */
+.main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.pageTitle h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pageTitle p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.refreshButton {
+  padding: 0.5rem 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.refreshButton:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Weekday Navigation */
+.weekdayNav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  gap: 0.25rem;
+}
+
+.weekdayButton {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  background: transparent;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  max-width: 60px;
+}
+
+.weekdayButton:hover:not(.activeDay) {
+  background: rgba(102, 126, 234, 0.2);
+  color: #333;
+}
+
+.weekdayButton.activeDay {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Exercise Log Content */
+.logContent {
+  margin-bottom: 2rem;
+}
+
+.dayTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.exerciseDay {
+  margin-bottom: 1.5rem;
+}
+
+.exerciseList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.exerciseItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.2s ease;
+}
+
+.exerciseItem:hover {
+  background: rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.exerciseInfo h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.25rem 0;
+}
+
+.exerciseInfo span {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.exerciseStatus {
+  font-size: 1.25rem;
+  color: #22c55e;
+}
+
+/* Empty Day */
+.emptyDay {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.emptyDay p {
+  font-size: 1rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.addButton {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Muscle Diagram */
+.muscleDiagramContainer {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.diagramWrapper {
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.muscleDiagramImage {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.muscleDiagramText {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  outline: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.button:focus {
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  color: #333;
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: #667eea;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main {
+    padding: 1rem;
+  }
+
+  .pageTitle h2 {
+    font-size: 2rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .weekdayNav {
+    gap: 0.125rem;
+  }
+
+  .weekdayButton {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+    max-width: 50px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    min-width: 100%;
+  }
+
+  .exerciseItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .exerciseStatus {
+    align-self: flex-end;
+  }
+}
+
+/* Progress Container */
+.progressContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Statistics Section */
+.statisticsSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Calendar Section */
+.calendarSection {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendarHeader h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.calendarControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.calendarButton {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.2s;
+}
+
+.calendarButton:hover {
+  background: #e0e0e0;
+}
+
+.calendarMonth {
+  font-weight: 600;
+  color: #333;
+  min-width: 120px;
+  text-align: center;
+}
+
+.calendar {
+  width: 100%;
+}
+
+.calendarWeekHeader {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  margin-bottom: 1px;
+}
+
+.calendarDayHeader {
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: #666;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.calendarDay {
+  aspect-ratio: 1;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  position: relative;
+  background: white;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarDay:hover {
+  background: #f8f9fa;
+}
+
+.calendarDay.otherMonth {
+  color: #ccc;
+  background: #fafafa;
+}
+
+.calendarDay.today {
+  background: #e3f2fd;
+  border-color: #2196f3;
+  font-weight: 600;
+}
+
+.calendarDay.selected {
+  background: #2196f3;
+  color: white;
+  border-color: #1976d2;
+}
+
+.dayNumber {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.sessionIndicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  background: #4caf50;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.sessionCount {
+  font-size: 0.6rem;
+}
+
+/* Date Details */
+.dateDetails {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dateHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dateHeader h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.addExerciseButton {
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.addExerciseButton:hover {
+  background: #45a049;
+}
+
+.sessionsList {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.sessionItem {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #2196f3;
+}
+
+.sessionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.sessionHeader h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.sessionTime {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.sessionDetails {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sessionDetails span {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.sessionNotes {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  color: #333;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+  background: #f0f0f0;
+}
+
+.modalContent {
+  padding: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  justify-content: flex-end;
+}
+
+.cancelButton {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.cancelButton:hover {
+  background: #e0e0e0;
+}
+
+.saveButton {
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: #1976d2;
+}
+
+.saveButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .progressContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .calendarHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .dateHeader {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal {
+    width: 95%;
+    margin: 1rem;
+  }
+} 
